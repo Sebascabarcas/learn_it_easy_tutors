@@ -1,0 +1,25 @@
+
+/***********form*************/
+.form{
+    .button{
+        background: #333;;
+        border: none;
+        box-shadow: 0px 10px 5px -9px rgba(0,0,0,0.75);
+        border-radius: 10px;
+        color:#FFF;
+        cursor: pointer;
+        height: 60px;
+        text-transform: uppercase;
+        width: 180px;
+    }
+    .button:hover{
+        opacity: 0.7;        
+    }
+    .button-green{
+        background: rgba(27, 95, 27, 0.876);
+    }
+}
+.form-header{
+    margin-top: 50px;
+}
+

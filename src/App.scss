@@ -1,0 +1,21 @@
+/*external*/
+@import url('https://necolas.github.io/normalize.css/8.0.1/normalize.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet');
+
+/*general*/
+@import 'css/fonts';
+@import 'css/variables';
+@import 'css/mixins';
+@import 'css/general';
+@import 'css/forms';
+
+/*components*/
+@import 'pages/Landing/styles';
+@import 'pages/Login/styles';
+
+
+body{
+  @include reset();
+  font-family: $font;
+  color: $text-dark-color;
+}
