@@ -1,9 +1,7 @@
 import React from 'react';
-import {Button, Form, Icon, Input, Layout, Menu, Typography} from 'antd';
+import {Button, Form, Icon, Input, Layout, Menu} from 'antd';
 import {Link} from 'react-router-dom';
 import Landing from '../Landing';
-
-const { Title, Text } = Typography;
 
 const Register = () => {
   const {Header, Content, Footer} = Layout;
@@ -18,8 +16,7 @@ const Register = () => {
   };
   return (
     <Landing>
-      <div className="form-container">
-        <Title style={{fontSize: 60, textAlign: ''}}>Learn It Easy</Title>
+      <div style={{background: '#fff', borderRadius: 20, margin: 24, padding: 24, minHeight: 280}}>
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
             <Input
@@ -55,8 +52,6 @@ const Register = () => {
           </Form.Item>
           <Form.Item>
             <Button
-              block
-              size="large"
               type="primary"
               htmlType="submit"
               className="login-form-button"
@@ -64,7 +59,7 @@ const Register = () => {
               Register
             </Button>
           </Form.Item>
-          <Link to="/login">I already have an account!</Link>
+          Or <Link to="/login">Login!</Link>
         </Form>
       </div>
     </Landing>
