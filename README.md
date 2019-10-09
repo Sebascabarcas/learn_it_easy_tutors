@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## URLS
 
-back-url -> https://learn-it-easy.herokuapp.com
+back-url -> https://learn-it-easy.herokuapp.com <br>
 front-url -> https://learn-it-easy.firebaseapp.com
 
 ## Installed Packages 📦
