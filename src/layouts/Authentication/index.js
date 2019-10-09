@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Layout, Button } from 'antd';
 import history from '../../history';
 import { withRouter } from 'react-router-dom'
-import Image from '../../assets/study_group2.jpg'; // Import using relative path
+import Image from '../../assets/study_group1.png'; // Import using relative path
 
 
 const styles = {

@@ -3,17 +3,17 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 // import Login from './Login/';
 // import SignUp from './SignUp/';
 // import PasswordRecovery from './PasswordRecovery/';
-import Landing from '../../pages/Landing';
-import Login from '../../pages/Login';
+import Login from '../../pages/Authentication/Login';
 import history from '../../history';
-import Register from '../../pages/Register';
+import Register from '../../pages/Authentication/Register';
+import Home from '../../pages/Landing/Home';
 
 function Public () {
   return (
       <BrowserRouter history={history}>
         <Switch>
-          <Route path="/" exact component={Landing} />
-          <Route path="/login/" render={props => <Login {...props} />} />
+          <Route path="/" exact component={Home} />
+          <Route path="/login/" component={Login} />
           <Route path="/register/" component={Register} />
           {/* <Route path="/recover-password/" component={RecoverPassword} /> */}
           {/* <Route path="/about/" component={About} />

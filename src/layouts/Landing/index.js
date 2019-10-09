@@ -1,38 +1,47 @@
 import React from 'react'
-import { Button, Row, Col } from 'antd';
-import Text from 'antd/lib/typography/Text';
+import { Menu, Layout, Button } from 'antd';
 import history from '../../history';
+import { withRouter } from 'react-router-dom'
+import Image from '../../assets/study_group2.jpg'; // Import using relative path
 
-const Landing = () => {
+
+const styles = {
+    bodyContainer: {
+        backgroundImage: `url(${Image})`
+    }
+};
+
+const { Header, Footer, Sider, Content } = Layout;
+
+const Landing = (props) => {
 
     return (
-        <div>
-            <Row type="flex" className="landing-container">
-                <Col className="first-middle landing-middle" span={12}>
-                        <div className="content">
-                            <Text strong>Sigue lo que te interesa.</Text>
-                            <Text strong>Entérate de lo que está hablando la gente.</Text>
-                            <Text strong>Únete a la conversación.</Text>
-                        </div>
-                </Col>
-                <Col className="second-middle landing-middle" span={12}>
-                    <div className="content">
-                        {/* <Button type="primary" ghost shape="round" size="medium">
-                            Iniciar sesión
-                        </Button> */}
-                        <Text strong>Descubre lo que está pasando en el mundo en este momento.</Text>
-                        <Text strong className="small">Únete hoy a Twitter.</Text>
-                        <Button onClick={() => history.push('signup')} style={{margin: '10px 0'}} type="primary" shape="round">
-                            Regístrate
-                        </Button>
-                        <Button onClick={() => history.push('login')} type="primary" ghost shape="round">
-                            Iniciar sesión
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
-        </div>
+        <Layout>
+            <Header className="header-landing">
+                <div className="logo" />
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    // defaultSelectedKeys={['2']}
+                    style={{ lineHeight: '64px' }}
+                >
+                    <Menu.Item key="1">Product</Menu.Item>
+                    <Menu.Item key="2">Our Team</Menu.Item>
+                    <Menu.Item key="3">About</Menu.Item>
+                </Menu>
+                <div className="header-button-container">
+                    <Button type="primary" onClick={() => props.history.push('/login/')} style={{marginRight: '20px'}}>Login</Button>
+                    <Button type="primary" onClick={() => props.history.push('/register/')} >Get Started</Button>
+                </div>
+            </Header>
+            <Content style={styles.bodyContainer} className="landing-content">
+                {/* <div style={{height: '100vh'}}>
+
+                </div> */}
+                {props.children}
+            </Content>
+        </Layout>
     )
 }
 
-export default Landing;
+export default withRouter(Landing);

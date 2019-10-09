@@ -9,12 +9,17 @@
 @import 'css/general';
 @import 'css/forms';
 
+/*layouts*/
+@import 'layouts/Landing/styles';
+@import 'layouts/Authentication/styles';
+
 /*components*/
 @import 'components/Navbar/styles';
 
-/*components*/
-@import 'pages/Landing/styles';
-@import 'pages/Login/styles';
+/*pages*/
+@import 'pages/Landing/Home/styles';
+@import 'pages/Authentication/Login/styles';
+@import 'pages/Authentication/Register/styles';
 
 
 body{

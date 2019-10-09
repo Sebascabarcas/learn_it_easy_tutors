@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Form, Icon, Input, Layout, Menu, notification, Typography, Row, Col} from 'antd';
 import {Link} from 'react-router-dom';
-import Landing from '../Landing';
+import Authentication from '../../../layouts/Authentication';
 
 const { Title, Text } = Typography;
 
@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault ();
   };
   return (
-    <Landing>
+    <Authentication>
       <div className="form-container">
         <Title style={{fontSize: 60, textAlign: ''}}>Learn It Easy</Title>
         {/* <Text type="secondary">Ant Design</Text> */}
@@ -58,7 +58,7 @@ const Login = () => {
           </Row>
         </Form>
       </div>
-    </Landing>
+    </Authentication>
   );
 };
 

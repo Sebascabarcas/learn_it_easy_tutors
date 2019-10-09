@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Form, Icon, Input, Layout, Menu, Typography} from 'antd';
 import {Link} from 'react-router-dom';
-import Landing from '../Landing';
+import Authentication from '../../../layouts/Authentication';
 
 const { Title, Text } = Typography;
 
@@ -17,7 +17,7 @@ const Register = () => {
     });
   };
   return (
-    <Landing>
+    <Authentication>
       <div className="form-container">
         <Title style={{fontSize: 60, textAlign: ''}}>Learn It Easy</Title>
         <Form onSubmit={handleSubmit} className="login-form">
@@ -67,7 +67,7 @@ const Register = () => {
           <Link to="/login">I already have an account!</Link>
         </Form>
       </div>
-    </Landing>
+    </Authentication>
   );
 };
 
