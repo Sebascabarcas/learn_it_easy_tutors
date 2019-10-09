@@ -13,7 +13,7 @@ const styles = {
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const Landing = (props) => {
+const Authentication = (props) => {
 
     return (
         <Layout>
@@ -34,7 +34,7 @@ const Landing = (props) => {
                     <Button type="primary" onClick={() => props.history.push('/register/')} >Get Started</Button>
                 </div>
             </Header>
-            <Content style={styles.bodyContainer} className="landing-content">
+            <Content style={styles.bodyContainer} className="auth-landing-content">
                 {/* <div style={{height: '100vh'}}>
 
                 </div> */}
@@ -44,4 +44,4 @@ const Landing = (props) => {
     )
 }
 
-export default withRouter(Landing);
+export default withRouter(Authentication);
