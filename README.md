@@ -3,13 +3,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installed Packages
 
-antd -> ^3.23.3
-axios -> ^0.19.0
-node-sass -> ^4.12.0
-react-dom -> ^16.9.0
-react -> ^16.9.0
-react-router-dom -> ^5.0.1
-react-scripts -> 3.1.1
+antd -> ^3.23.3 <br>
+axios -> ^0.19.0 <br>
+node-sass -> ^4.12.0 <br>
+react-dom -> ^16.9.0 <br>
+react -> ^16.9.0 <br>
+react-router-dom -> ^5.0.1 <br>
+react-scripts -> 3.1.1 <br>
 
 ## Available Scripts
 
