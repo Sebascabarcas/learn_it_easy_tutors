@@ -5,11 +5,13 @@ import Landing from '../../../layouts/Landing';
 
 const { Title, Text } = Typography;
 
-const Home = () => {
+const Product = () => {
   return (
     <Landing>
       <div className="landing-title-container">
-        < Title>LEARN FAST, LEARN EASY. LEARN IT EASY </Title>
+        <Title>THE BEST PLACE FOR STUDENTS AND TEACHERS </Title>
+        <Title level={4} style={{marginBottom: 25  }}>In learn it easy we improve the relation between students and teachers, making fast connections for fast education.</Title>
+        <br/>
         <Button type="primary" size="large">Try It Now</Button>
       </div>
 
@@ -17,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Product;

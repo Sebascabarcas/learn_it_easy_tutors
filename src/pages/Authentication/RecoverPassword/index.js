@@ -1,63 +1,93 @@
 import React, {useState} from 'react';
-import {Button, Form, Icon, Input, Layout, Menu} from 'antd';
-import { Link } from "react-router-dom";
-import { login } from '../../firebase';
+import {
+  Button,
+  Form,
+  Icon,
+  Input,
+  notification,
+  Typography,
+  Row,
+  Col,
+} from 'antd';
+import {Link} from 'react-router-dom';
+import Authentication from '../../../layouts/Authentication';
+import { login, recoverPassword } from '../../../services/user';
 
-const Login = () => {
-    
-    const {Header, Content, Footer} = Layout
-    const [open, setOpen] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const {Title, Text} = Typography;
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        login(email, password)
-    };
-    return (
-    <Layout className="layout">
-      <Header className="header" style={{backgroundColor: "#fff"}}>
-        <div className="logo" />
-        <Menu
-          theme="light"
-          mode="horizontal"
-        //   defaultSelectedKeys={['1']}
-          style={{lineHeight: '64px'}}
-        >
-          <Menu.Item key="1">Home</Menu.Item>
-          <Menu.Item key="2">About Us</Menu.Item>
-        </Menu>
-      </Header>
-      <Content style={{padding: '0 50px', height: 'calc(100vh - 66px)'}}>
-        <div style={{background: '#fff', margin: 24, padding: 24, minHeight: 280}}>
+const RecoverPassword = props => {
+  const {form} = props;
+
+  const handleSubmit = e => {
+    e.preventDefault ();
+    const { form, history } = props
+    form.validateFields( async (error, values) => {
+      if (!error) {
+        console.log(values);
+        try {
+          const res = await recoverPassword(values);
+          console.log(res);
+          
+          notification.success({
+            message: 'Restablecimiento enviado!',
+            description: 'Recibe su correo para recibir el token de restauración de contraseña'
+          })
+          history.push('/reset-password/')
+        } catch (err) {
+          
+          notification.error({
+            message: 'Error!',
+            description: 'Correo invalido',
+          }) 
+        }
+        
+        // form.resetFields()
+      }
+    })
+  };
+  return (
+    <Authentication>
+      <div className="form-container">
+        <Title style={{fontSize: 60, textAlign: 'center'}}>Recover Password</Title>
+        <Title style={{color: 'gray'}} level={2}>Learn It Easy</Title>
+        {/* <Text type="secondary">Ant Design</Text> */}
         <Form onSubmit={handleSubmit} className="login-form">
-        <Form.Item>
-            <Input
-              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={e => setEmail(e.target.value)} value={email}
-              placeholder="Email"
-            />
-        </Form.Item>
-        <Form.Item>
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={e => setPassword(e.target.value)} value={password} 
-              type="password"
-              placeholder="Password"
-            />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-        </Form.Item>
-          Or <Link to="/register">register now!</Link>
-      </Form>
-        </div>
-      </Content>
-      {/* <Footer style={{textAlign: 'center'}}>
-        Ant Design ©2018 Created by Ant UED
-      </Footer> */}
-    </Layout>
+          <Form.Item>
+            {form.getFieldDecorator ('email', {
+              // initialValue: currentOffice.location_id,
+              rules: [
+                {required: true, message: 'Por favor ingrese su correo!'},
+              ],
+            }) (
+              <Input
+                prefix={<Icon type="mail" style={{color: 'rgba(0,0,0,.25)'}} />}
+                placeholder="Email"
+              />
+            )}
+          </Form.Item>
+          <Form.Item>
+            <Button
+              block
+              size="large"
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Send
+            </Button>
+          </Form.Item>
+          <Row type="flex" justify="space-between">
+            <Col>
+              <Link to="/login">Login!</Link>
+            </Col>
+            {/* <Col>
+              <Link to="/register">Register now!</Link>
+            </Col> */}
+          </Row>
+        </Form>
+      </div>
+    </Authentication>
   );
 };
 
-export default Login;
+export default Form.create () (RecoverPassword);

@@ -33,7 +33,7 @@ const Login = props => {
             description: 'Disfrute navegar por nuestra plataforma'
           })
           localStorage.set('__auth_lie', JSON.stringify(res))
-          
+          props.history.push('/logged/')
         } catch (err) {
           
           notification.error({
@@ -49,7 +49,8 @@ const Login = props => {
   return (
     <Authentication>
       <div className="form-container">
-        <Title style={{fontSize: 60, textAlign: ''}}>Learn It Easy</Title>
+        <Title style={{fontSize: 60, textAlign: 'center'}}>Login</Title>    
+        <Title style={{color: 'gray'}} level={2}>Learn It Easy</Title>
         {/* <Text type="secondary">Ant Design</Text> */}
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item>
