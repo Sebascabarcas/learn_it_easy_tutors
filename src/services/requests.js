@@ -2,7 +2,7 @@ import axios from 'axios'
 
 function request(path, method, data, { _headers, skipLoading, skipToken }) {
   const headers = _headers || {}
-  // if (localStorage.getItem('__auth_lupa')) headers.Authorization = `Token token=${JSON.parse(localStorage.getItem('__auth_lupa')).secret}`
+  if (localStorage.getItem('__auth_lupa')) headers.Authorization = `Token token=${JSON.parse(localStorage.getItem('__auth_lupa')).secret}`
   return axios({
     method,
     headers,

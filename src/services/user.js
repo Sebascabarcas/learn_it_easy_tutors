@@ -4,6 +4,18 @@ export async function login(auth, { skipLoading } = {}) {
   return Requests.post('sessions/', auth, { skipLoading }).then(session => session.data)
 }
 
+export async function getUsers({ skipLoading } = {}) {
+  return Requests.get('users/', { skipLoading }).then(users => users.data)
+}
+
+export async function getUser(id, { skipLoading } = {}) {
+  return Requests.get(`users/${id}`, { skipLoading }).then(users => users.data)
+}
+
+export async function updateUser(id, user, { skipLoading } = {}) {
+  return Requests.put(`users/${id}`, user, { skipLoading }).then(user => user.data)
+}
+
 export async function recoverPassword(email, { skipLoading } = {}) {
   return Requests.post('forget_password/', email, { skipLoading }).then(forget_password => forget_password.data)
 }
