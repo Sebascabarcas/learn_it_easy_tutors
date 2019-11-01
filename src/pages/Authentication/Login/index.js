@@ -28,8 +28,8 @@ const Login = props => {
         console.log(values);
         try {
           const res = await login(values);
-          localStorage.setItem('__auth_lie', JSON.stringify(res))
-          props.history.push('/logged/')
+          await localStorage.setItem('__auth_lie', JSON.stringify(res))
+          props.history.push('/logged')
           notification.success({
             message: 'Ingreso exitoso!',
             description: 'Disfrute navegar por nuestra plataforma'

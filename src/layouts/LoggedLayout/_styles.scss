@@ -1,6 +1,10 @@
 .header {
-    background-color: #001529;
+    background-color: #001529 !important;
     padding: 0;
+}
+
+.loggedLayout {
+    height: calc(100vh);    
 }
 
 .form-container {

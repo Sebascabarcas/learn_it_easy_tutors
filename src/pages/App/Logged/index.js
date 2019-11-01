@@ -11,15 +11,19 @@ import {
   Table,
   Layout,
   Menu,
+  Dropdown,
 } from 'antd';
 import {getUsers} from '../../../services/user';
 import {Link} from 'react-router-dom';
+import LoggedLayout from '../../../layouts/LoggedLayout';
 
 const {Title, Text} = Typography;
 const {Header, Content, Footer, Sider} = Layout;
 
 const Logged = props => {
   const [users, _setUsers] = useState ([]);
+  const [current_user, _setCurrentUser] = useState ({});
+  const {history} = props;
   const columns = [
     {
       title: 'Nombres',
@@ -37,12 +41,12 @@ const Logged = props => {
       key: 'email',
     },
     {
-      title: 'Action',
+      title: 'Acciones',
       key: 'action',
       render: (text, record) => (
         <span>
             <Button
-              onClick={() => {props.history.push(`/logged/${record.id}`)}}
+              onClick={() => {history.push(`/logged/${record.id}`)}}
               size="large"
               type="primary"
               htmlType="submit"
@@ -55,6 +59,19 @@ const Logged = props => {
     },
   ];
 
+  const menu = (
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item key="1">
+        <Icon type="user" />
+        Perfil
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Icon type="logout" />
+        Cerrar sesión
+      </Menu.Item>
+    </Menu>
+  );
+
   useEffect (() => {
     const fetchUsers = async () => {
       const users = await getUsers ();
@@ -62,38 +79,30 @@ const Logged = props => {
     };
     fetchUsers ();
   }, []);
+
+  function handleMenuClick({key}) {
+    switch (key) {
+      case "1":
+        history.push(`/profile`)
+        break;
+      case "2":
+        
+        break;
+    
+      default:
+        break;
+    }
+    console.log('click', key);
+  }
+
   return (
     // <h4>Loggeado</h4>
     (
-      <Layout>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={broken => {
-            console.log (broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log (collapsed, type);
-          }}
-        >
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span className="nav-text" style={{color: 'white'}}><Link style={{color: 'white'}} to="/logged/">Usuarios</Link></span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Header style={{background: '#fff', padding: 0}} />
-          <Content style={{margin: '24px 16px 0'}}>
-            <Table rowKey="id" columns={columns} dataSource={users} />
-          </Content>
-          <Footer style={{textAlign: 'center'}}>
-            Learn It Easy 
-          </Footer>
-        </Layout>
-      </Layout>
+      <LoggedLayout>
+        <Content style={{margin: '24px 16px 0'}}>
+          <Table rowKey="id" columns={columns} dataSource={users} />
+        </Content>
+      </LoggedLayout>
     )
   );
 };
