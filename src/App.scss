@@ -12,6 +12,7 @@
 /*layouts*/
 @import 'layouts/Landing/styles';
 @import 'layouts/Authentication/styles';
+@import 'layouts/LoggedLayout/styles';
 
 /*components*/
 @import 'components/Navbar/styles';
@@ -24,6 +25,8 @@
 @import 'pages/Authentication/Register/styles';
 // @import 'pages/Authentication/ResetPassword/styles';
 @import 'pages/Authentication/RecoverPassword/styles';
+@import 'pages/App/Logged/styles';
+@import 'pages/App/Profile/styles';
 
 
 body{
