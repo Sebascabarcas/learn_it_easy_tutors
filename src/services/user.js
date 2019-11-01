@@ -13,7 +13,7 @@ export async function getUser(id, { skipLoading } = {}) {
 }
 
 export async function updateUser(id, user, { skipLoading } = {}) {
-  return Requests.put(`users/${id}`, user, { skipLoading }).then(user => user.data)
+  return Requests.put(`users/${id}`, user, { skipLoading, headers: {"Content-type": "multipart/form-data"} }).then(user => user.data)
 }
 
 export async function recoverPassword(email, { skipLoading } = {}) {
